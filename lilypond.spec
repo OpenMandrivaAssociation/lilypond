@@ -215,3 +215,4 @@ if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q
 %files doc
 %defattr(-, root, root)
 %{_datadir}/omf/%{name}
+
