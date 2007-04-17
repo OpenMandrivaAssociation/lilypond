@@ -11,13 +11,14 @@
 %define query_modules pango-querymodules%{query_modules_suffix}
 
 Name:           lilypond
-Version:        2.11.20
+Version:        2.11.22
 Release:        %mkrel 1
-Summary:        A program for printing sheet music
+Epoch:          0
+Summary:        Program for printing sheet music
 License:        GPL
 Group:          Publishing
 URL:            http://www.lilypond.org/
-Source0:        http://lilypond.org/download/sources/v2.11/lilypond-%{version}.tar.bz2
+Source0:        http://lilypond.org/download/sources/v2.11/lilypond-%{version}.tar.gz
 Source1:        %{name}.bash-completion
 # (Abel) use utf8 as input encoding by default for tex backend
 Patch2:         lilypond-2.8.6-tex-use-utf8.patch
@@ -26,7 +27,6 @@ Patch3:         lilypond-2.6.3-locale-indep-date.patch
 # (Abel) use ImageMagick to replace netpbm -- pnmtopng segfault
 # and I'm too lazy to look into the problem
 Patch4:         lilypond-2.6.4-use-imagemagick.patch
-Requires:       ec-fonts-mftraced
 Requires(post): chkfontpath
 Requires(preun): chkfontpath
 Requires(post): rpm-helper
@@ -37,7 +37,6 @@ Requires(postun): tetex
 # (Abel) bib2html or bibtex2html -- pick either one
 BuildRequires:  bib2html
 BuildRequires:  bison
-BuildRequires:  ec-fonts-mftraced
 BuildRequires:  flex
 BuildRequires:  fontforge
 BuildRequires:  gettext-devel
@@ -163,6 +162,9 @@ popd > /dev/null
 
 %{find_lang} %{name}
 
+%clean
+%{__rm} -rf %{buildroot}
+
 %post
 %_install_info %{name}/lilypond.info
 %_install_info %{name}/lilypond-internals.info
@@ -192,9 +194,6 @@ if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q
 %postun doc
 if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q; fi
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.lang
 %defattr(-, root, root)
 %doc COPYING README.txt INSTALL.txt DEDICATION NEWS.txt AUTHORS.txt THANKS
@@ -216,5 +215,3 @@ if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q
 %files doc
 %defattr(-, root, root)
 %{_datadir}/omf/%{name}
-
-
