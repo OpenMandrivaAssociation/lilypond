@@ -41,6 +41,7 @@ BuildRequires:  flex
 BuildRequires:  fontforge
 BuildRequires:  gettext-devel
 BuildRequires:  ghostscript
+BuildRequires:  ghostscript-fonts
 BuildRequires:  groff-for-man
 BuildRequires:  gtk2-devel
 BuildRequires:  guile-devel >= 1.8.1
