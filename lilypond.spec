@@ -29,6 +29,7 @@ Patch3:         lilypond-2.6.3-locale-indep-date.patch
 Patch4:         lilypond-2.6.4-use-imagemagick.patch
 Requires(post): chkfontpath
 Requires(preun): chkfontpath
+Requires(post): ec-fonts-mftraced
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires(post): findutils
@@ -37,6 +38,7 @@ Requires(postun): tetex
 # (Abel) bib2html or bibtex2html -- pick either one
 BuildRequires:  bib2html
 BuildRequires:  bison
+BuildRequires:  ec-fonts-mftraced
 BuildRequires:  flex
 BuildRequires:  fontforge
 BuildRequires:  gettext-devel
@@ -215,4 +217,3 @@ if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q
 %files doc
 %defattr(-, root, root)
 %{_datadir}/omf/%{name}
-
