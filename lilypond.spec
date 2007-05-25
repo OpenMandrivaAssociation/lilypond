@@ -12,14 +12,15 @@
 
 Name:           lilypond
 Version:        2.11.25
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Program for printing sheet music
 License:        GPL
 Group:          Publishing
 URL:            http://www.lilypond.org/
-Source0:        http://lilypond.org/download/sources/v2.11/lilypond-%{version}.tar.gz
+Source0:        http://lilypond.org/download/sources/v2.11/%{name}-%{version}.tar.gz
 Source1:        %{name}.bash-completion
+Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-1.documentation.tar.bz2
 # (Abel) use utf8 as input encoding by default for tex backend
 Patch2:         lilypond-2.8.6-tex-use-utf8.patch
 # (Abel) use locale-independency date as document timestamp
@@ -92,6 +93,11 @@ also install LilyPond main package.
 %patch4 -p1 -b .netpbm
 %{__perl} -pi -e 's/1\.6\.7/1.6/' configure.in
 %{__autoconf}
+
+mkdir -p %{name}-documentation-%{version}
+cd %{name}-documentation-%{version}
+bunzip2 -dcq %SOURCE2 | tar -xf -
+cd -
 
 %build
 #
@@ -216,4 +222,5 @@ if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q
 
 %files doc
 %defattr(-, root, root)
+%doc %{name}-documentation-%{version}/*
 %{_datadir}/omf/%{name}
