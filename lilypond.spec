@@ -12,7 +12,7 @@
 
 Name:           lilypond
 Version:        2.11.27
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Program for printing sheet music
 License:        GPL
@@ -28,8 +28,6 @@ Patch3:         lilypond-2.6.3-locale-indep-date.patch
 # (Abel) use ImageMagick to replace netpbm -- pnmtopng segfault
 # and I'm too lazy to look into the problem
 Patch4:         lilypond-2.6.4-use-imagemagick.patch
-Requires(post): chkfontpath
-Requires(preun): chkfontpath
 Requires(post): ec-fonts-mftraced
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
@@ -170,6 +168,11 @@ popd > /dev/null
 
 %{find_lang} %{name}
 
+mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
+ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
+    %{buildroot}%_sysconfdir/X11/fontpath.d/lilypond:pri=50
+
+
 %clean
 %{__rm} -rf %{buildroot}
 
@@ -183,7 +186,6 @@ popd > /dev/null
 %{_bindir}/mktexlsr > /dev/null
 
 %{_bindir}/mkfontdir %{_datadir}/lilypond/%{version}/fonts/type1
-%{_sbindir}/chkfontpath -l | grep -q %{_datadir}/lilypond/%{version}/fonts/type1 || %{_sbindir}/chkfontpath --add=%{_datadir}/lilypond/%{version}/fonts/type1
 
 %preun
 %_remove_install_info %{name}/lilypond.info
@@ -191,7 +193,6 @@ popd > /dev/null
 %_remove_install_info %{name}/music-glossary.info
 
 %{__rm} -f %{_datadir}/lilypond/%{version}/fonts/type1/fonts.dir
-if %{_sbindir}/chkfontpath -l | %{__grep} -q %{_datadir}/lilypond/%{version}/fonts/type1; then %{_sbindir}/chkfontpath --remove=%{_datadir}/lilypond/%{version}/fonts/type1; fi
 
 %postun
 %{_bindir}/mktexlsr > /dev/null
@@ -219,6 +220,7 @@ if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q
 %{_infodir}/%{name}/*.info*
 %config(noreplace) %{_sysconfdir}/bash_completion.d/%{name}
 %config(noreplace) %{_sysconfdir}/emacs/site-start.d/*
+%{_sysconfdir}/X11/fontpath.d/lilypond:pri=50
 
 %files doc
 %defattr(-, root, root)
