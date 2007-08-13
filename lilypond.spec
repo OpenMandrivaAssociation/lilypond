@@ -11,7 +11,7 @@
 %define query_modules pango-querymodules%{query_modules_suffix}
 
 Name:           lilypond
-Version:        2.11.28
+Version:        2.11.29
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Program for printing sheet music
@@ -28,6 +28,7 @@ Patch3:         lilypond-2.6.3-locale-indep-date.patch
 # (Abel) use ImageMagick to replace netpbm -- pnmtopng segfault
 # and I'm too lazy to look into the problem
 Patch4:         lilypond-2.6.4-use-imagemagick.patch
+Suggests:	%{name}-doc = %{version}
 Requires(post): ec-fonts-mftraced
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
