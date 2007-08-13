@@ -206,7 +206,7 @@ if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q
 
 %files -f %{name}.lang
 %defattr(-, root, root)
-%doc COPYING README.txt INSTALL.txt DEDICATION NEWS.txt AUTHORS.txt THANKS
+%doc COPYING README.txt DEDICATION NEWS.txt AUTHORS.txt THANKS
 %{_bindir}/*
 %{_datadir}/emacs/site-lisp/lilypond*
 %{_datadir}/%{name}
