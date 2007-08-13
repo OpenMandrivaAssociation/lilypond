@@ -68,7 +68,7 @@ http://www.mutopiaproject.org for details).
  
 If you are new to lilypond, you will almost certainly want to install the
 "lilypond-doc" package and take a look at tutorials under
-%{_docdir}/lilypond.
+%{_docdir}/lilypond-doc.
 
 %package doc
 Summary:        LilyPond documentation, examples and Mutopia files
@@ -199,10 +199,10 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 %{_bindir}/mktexlsr > /dev/null
 
 %post doc
-if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q; fi
+%update_scrollkeeper
 
 %postun doc
-if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q; fi
+%clean_scrollkeeper
 
 %files -f %{name}.lang
 %defattr(-, root, root)
