@@ -11,7 +11,7 @@
 %define query_modules pango-querymodules%{query_modules_suffix}
 
 Name:           lilypond
-Version:        2.11.31
+Version:        2.11.34
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Program for printing sheet music
