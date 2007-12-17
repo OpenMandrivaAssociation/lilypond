@@ -53,7 +53,6 @@ BuildRequires:  texinfo
 BuildRequires:  info-install
 BuildRequires:  zip
 BuildRequires:  ImageMagick
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
 
 %description
 LilyPond is a music typesetter.  It produces beautiful sheet music using a
