@@ -11,7 +11,7 @@
 %define query_modules pango-querymodules%{query_modules_suffix}
 
 Name:           lilypond
-Version:        2.11.36
+Version:        2.11.37
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Program for printing sheet music
@@ -20,7 +20,7 @@ Group:          Publishing
 URL:            http://www.lilypond.org/
 Source0:        http://lilypond.org/download/sources/v2.11/%{name}-%{version}.tar.gz
 Source1:        %{name}.bash-completion
-Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-1.documentation.tar.bz2
+Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-2.11.38-1.documentation.tar.bz2
 # (Abel) use utf8 as input encoding by default for tex backend
 Patch2:         lilypond-2.8.6-tex-use-utf8.patch
 # (Abel) use locale-independency date as document timestamp
