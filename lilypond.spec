@@ -178,9 +178,11 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 %{__rm} -rf %{buildroot}
 
 %post
-%_install_info %{name}/lilypond.info
-%_install_info %{name}/lilypond-internals.info
-%_install_info %{name}/music-glossary.info
+%_install_info lilypond.info
+%_install_info lilypond-internals.info
+%_install_info lilypond-learning.info
+%_install_info lilypond-program.info
+%_install_info music-glossary.info
 
 %{_bindir}/find /var/lib/texmf \( -name 'feta*.pk' -or -name 'feta*.tfm' -or -name 'parmesan*.pk' -or -name 'parmesan*.tfm' \) -print0 | %{_bindir}/xargs -r -0 %{__rm} -f
 
@@ -189,9 +191,11 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 %{_bindir}/mkfontdir %{_datadir}/lilypond/%{version}/fonts/type1
 
 %preun
-%_remove_install_info %{name}/lilypond.info
-%_remove_install_info %{name}/lilypond-internals.info
-%_remove_install_info %{name}/music-glossary.info
+%_remove_install_info lilypond.info
+%_remove_install_info lilypond-learning.info
+%_remove_install_info lilypond-internals.info
+%_remove_install_info lilypond-program.info
+%_remove_install_info music-glossary.info
 
 %{__rm} -f %{_datadir}/lilypond/%{version}/fonts/type1/fonts.dir
 
@@ -217,8 +221,7 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 %{_datadir}/vim/*/*
 %{_libdir}/%{name}
 %{_mandir}/man?/*
-%dir %{_infodir}/%{name}
-%{_infodir}/%{name}/*.info*
+%{_infodir}/*.info*
 %config(noreplace) %{_sysconfdir}/bash_completion.d/%{name}
 %config(noreplace) %{_sysconfdir}/emacs/site-start.d/*
 %{_sysconfdir}/X11/fontpath.d/lilypond:pri=50
