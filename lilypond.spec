@@ -9,6 +9,7 @@
 %define query_modules_suffix -64
 %endif
 %define query_modules pango-querymodules%{query_modules_suffix}
+%define _disable_ld_no_undefined 1
 
 Name:           lilypond
 Version:        2.11.46
