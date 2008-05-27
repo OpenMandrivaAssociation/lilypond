@@ -9,6 +9,8 @@
 %define query_modules_suffix -64
 %endif
 %define query_modules pango-querymodules%{query_modules_suffix}
+
+# for python modules
 %define _disable_ld_no_undefined 1
 
 Name:           lilypond
