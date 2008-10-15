@@ -25,7 +25,7 @@ Source0:        http://lilypond.org/download/sources/v2.11/%{name}-%{version}.ta
 Source1:        %{name}.bash-completion
 Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-1.documentation.tar.bz2
 # (Abel) use utf8 as input encoding by default for tex backend
-Patch2:         lilypond-2.8.6-tex-use-utf8.patch
+Patch2:         lilypond-2.11.62-tex-use-utf8.patch
 # (Abel) use locale-independency date as document timestamp
 Patch3:         lilypond-2.6.3-locale-indep-date.patch
 # (Abel) use ImageMagick to replace netpbm -- pnmtopng segfault
