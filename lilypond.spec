@@ -55,7 +55,7 @@ BuildRequires:  tetex-devel
 BuildRequires:  texinfo
 BuildRequires:  info-install
 BuildRequires:  zip
-BuildRequires:  ImageMagick
+BuildRequires:  imagemagick
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
 
 %description
