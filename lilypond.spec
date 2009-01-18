@@ -24,14 +24,12 @@ URL:            http://www.lilypond.org/
 Source0:        http://lilypond.org/download/sources/v2.11/%{name}-%{version}.tar.gz
 Source1:        %{name}.bash-completion
 Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-1.documentation.tar.bz2
-# (Abel) use utf8 as input encoding by default for tex backend
-Patch2:         lilypond-2.11.62-tex-use-utf8.patch
 # (Abel) use locale-independency date as document timestamp
 Patch3:         lilypond-2.6.3-locale-indep-date.patch
 # (Abel) use ImageMagick to replace netpbm -- pnmtopng segfault
 # and I'm too lazy to look into the problem
 Patch4:         lilypond-2.6.4-use-imagemagick.patch
-Patch5:		lilypond-2.11.65-fix-string-format.patch
+Patch5:		lilypond-2.12.1-fix-string-format.patch
 Suggests:	%{name}-doc = %{version}
 Requires(post): ec-fonts-mftraced
 Requires(post): rpm-helper
@@ -91,7 +89,6 @@ also install LilyPond main package.
 
 %prep
 %setup -q
-%patch2 -p1 -b .utf8
 %patch3 -p1 -b .date
 %patch4 -p1 -b .netpbm
 %patch5 -p0
