@@ -29,7 +29,7 @@ Patch3:         lilypond-2.6.3-locale-indep-date.patch
 # (Abel) use ImageMagick to replace netpbm -- pnmtopng segfault
 # and I'm too lazy to look into the problem
 Patch4:         lilypond-2.6.4-use-imagemagick.patch
-Patch5:		lilypond-2.12.1-fix-string-format.patch
+Patch5:		lilypond-2.12.2-fix-string-format.patch
 Suggests:	%{name}-doc = %{version}
 Requires(post): ec-fonts-mftraced
 Requires(post): rpm-helper
