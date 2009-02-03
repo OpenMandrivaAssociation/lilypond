@@ -15,14 +15,13 @@
 
 Name:           lilypond
 Version:        2.12.2
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Program for printing sheet music
 License:        GPL
 Group:          Publishing
 URL:            http://www.lilypond.org/
 Source0:        http://lilypond.org/download/sources/v2.11/%{name}-%{version}.tar.gz
-Source1:        %{name}.bash-completion
 Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-1.documentation.tar.bz2
 # (Abel) use locale-independency date as document timestamp
 Patch3:         lilypond-2.6.3-locale-indep-date.patch
@@ -163,12 +162,6 @@ pushd %{buildroot}%{_datadir}/texmf > /dev/null
 %{__ln_s} ../../../lilypond/%{version}/fonts/tfm fonts/tfm/lilypond
 popd > /dev/null
 
-#
-# bash-completion file
-#
-%{__mkdir_p} %{buildroot}%{_sysconfdir}/bash_completion.d
-%{__cp} -a %{SOURCE1} %{buildroot}%{_sysconfdir}/bash_completion.d/%{name}
-
 %{find_lang} %{name}
 
 mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
@@ -224,7 +217,6 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 %{_libdir}/%{name}
 %{_mandir}/man?/*
 %{_infodir}/*.info*
-%config(noreplace) %{_sysconfdir}/bash_completion.d/%{name}
 %config(noreplace) %{_sysconfdir}/emacs/site-start.d/*
 %{_sysconfdir}/X11/fontpath.d/lilypond:pri=50
 
