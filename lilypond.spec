@@ -15,7 +15,7 @@
 
 Name:           lilypond
 Version:        2.12.2
-Release:        %mkrel 3
+Release:        %mkrel 4
 Epoch:          0
 Summary:        Program for printing sheet music
 License:        GPL
