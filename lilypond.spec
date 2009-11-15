@@ -29,6 +29,7 @@ Patch3:         lilypond-2.6.3-locale-indep-date.patch
 # and I'm too lazy to look into the problem
 Patch4:         lilypond-2.6.4-use-imagemagick.patch
 Patch5:		lilypond-2.12.2-fix-string-format.patch
+Patch6:		lilypond-2.11.65-python26.patch
 Suggests:	%{name}-doc = %{version}
 Requires(post): ec-fonts-mftraced
 Requires(post): rpm-helper
@@ -91,6 +92,7 @@ also install LilyPond main package.
 %patch3 -p1 -b .date
 %patch4 -p1 -b .netpbm
 %patch5 -p0
+%patch6 -p0
 %{__perl} -pi -e 's/1\.6\.7/1.6/' configure.in
 %{__autoconf}
 
