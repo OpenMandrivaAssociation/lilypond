@@ -14,15 +14,15 @@
 %define _disable_ld_no_undefined 1
 
 Name:           lilypond
-Version:        2.12.2
-Release:        %mkrel 5
+Version:        2.12.3
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Program for printing sheet music
 License:        GPL
 Group:          Publishing
 URL:            http://www.lilypond.org/
 Source0:        http://lilypond.org/download/sources/v2.11/%{name}-%{version}.tar.gz
-Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-1.documentation.tar.bz2
+Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-2.documentation.tar.bz2
 # (Abel) use locale-independency date as document timestamp
 Patch3:         lilypond-2.6.3-locale-indep-date.patch
 # (Abel) use ImageMagick to replace netpbm -- pnmtopng segfault
@@ -30,7 +30,7 @@ Patch3:         lilypond-2.6.3-locale-indep-date.patch
 Patch4:         lilypond-2.6.4-use-imagemagick.patch
 Patch5:		lilypond-2.12.2-fix-string-format.patch
 Patch6:		lilypond-2.11.65-python26.patch
-Patch7:		lilypond-consts.patch
+#Patch7:		lilypond-consts.patch
 Suggests:	%{name}-doc = %{version}
 Requires(post): ec-fonts-mftraced
 Requires(post): rpm-helper
@@ -78,8 +78,8 @@ Summary:        LilyPond documentation, examples and Mutopia files
 Group:          Publishing
 Obsoletes:      %{name}-manual
 Provides:       %{name}-manual
-Requires(post): scrollkeeper
-Requires(postun): scrollkeeper
+Requires(post): rarian
+Requires(postun): rarian
 
 %description doc
 The documentation of LilyPond, both in HTML and PostScript, along with
@@ -94,7 +94,7 @@ also install LilyPond main package.
 %patch4 -p1 -b .netpbm
 %patch5 -p0
 %patch6 -p0
-%patch7 -p1
+#%patch7 -p1
 
 mkdir -p %{name}-documentation-%{version}
 cd %{name}-documentation-%{version}
