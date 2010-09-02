@@ -15,7 +15,7 @@
 
 Name:           lilypond
 Version:        2.12.3
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Program for printing sheet music
 License:        GPL
@@ -78,6 +78,7 @@ Summary:        LilyPond documentation, examples and Mutopia files
 Group:          Publishing
 Obsoletes:      %{name}-manual
 Provides:       %{name}-manual
+BuildArch:	noarch
 Requires(post): rarian
 Requires(postun): rarian
 
