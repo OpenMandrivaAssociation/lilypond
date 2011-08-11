@@ -14,36 +14,28 @@
 %define _disable_ld_no_undefined 1
 
 Name:           lilypond
-Version:        2.12.3
-Release:        %mkrel 3
+Version:        2.15.8
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Program for printing sheet music
 License:        GPL
 Group:          Publishing
 URL:            http://www.lilypond.org/
-Source0:        http://lilypond.org/download/sources/v2.11/%{name}-%{version}.tar.gz
-Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-2.documentation.tar.bz2
-# (Abel) use locale-independency date as document timestamp
-Patch3:         lilypond-2.6.3-locale-indep-date.patch
-# (Abel) use ImageMagick to replace netpbm -- pnmtopng segfault
-# and I'm too lazy to look into the problem
-Patch4:         lilypond-2.6.4-use-imagemagick.patch
-Patch5:		lilypond-2.12.2-fix-string-format.patch
-Patch6:		lilypond-2.11.65-python26.patch
-#Patch7:		lilypond-consts.patch
+Source0:        http://lilypond.org/download/sources/v2.13/%{name}-%{version}.tar.gz
+Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-1.documentation.tar.bz2
 Suggests:	%{name}-doc = %{version}
 Requires(post): ec-fonts-mftraced
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires(post): findutils
-Requires(post): tetex
-Requires(postun): tetex
+Requires(post): texlive
+Requires(postun): texlive
 # (Abel) bib2html or bibtex2html -- pick either one
 BuildRequires:  bib2html
 BuildRequires:  bison
 BuildRequires:  ec-fonts-mftraced
 BuildRequires:  flex
-BuildRequires:  fontforge
+BuildRequires:  fontforge >= 1.0-0.20110222
 BuildRequires:  gettext-devel
 BuildRequires:  ghostscript
 BuildRequires:  groff-for-man
@@ -51,12 +43,11 @@ BuildRequires:  gtk2-devel
 BuildRequires:  guile-devel >= 1.8.1
 BuildRequires:  mftrace
 BuildRequires:  python-devel
-BuildRequires:  tetex-devel
 BuildRequires:  texinfo
 BuildRequires:  info-install
 BuildRequires:  zip
 BuildRequires:  imagemagick
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
+
 
 %description
 LilyPond is a music typesetter.  It produces beautiful sheet music using a
@@ -78,7 +69,6 @@ Summary:        LilyPond documentation, examples and Mutopia files
 Group:          Publishing
 Obsoletes:      %{name}-manual
 Provides:       %{name}-manual
-BuildArch:	noarch
 Requires(post): rarian
 Requires(postun): rarian
 
@@ -91,11 +81,6 @@ also install LilyPond main package.
 
 %prep
 %setup -q
-%patch3 -p1 -b .date
-%patch4 -p1 -b .netpbm
-%patch5 -p0
-%patch6 -p0
-#%patch7 -p1
 
 mkdir -p %{name}-documentation-%{version}
 cd %{name}-documentation-%{version}
@@ -116,7 +101,7 @@ export PANGO_RC_FILE=`pwd`/pangorc
 # (not necessary after applying date patch)
 #
 #export LC_TIME=C
-%{configure2_5x} --enable-gui
+%{configure2_5x}
 %{make}
 
 # Doesn't work out of the box for this version.
@@ -200,11 +185,6 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 %postun
 %{_bindir}/mktexlsr > /dev/null
 
-%post doc
-%update_scrollkeeper
-
-%postun doc
-%clean_scrollkeeper
 
 %files -f %{name}.lang
 %defattr(-, root, root)
@@ -226,4 +206,5 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 %files doc
 %defattr(-, root, root)
 %doc %{name}-documentation-%{version}/*
-%{_datadir}/omf/%{name}
+
+
