@@ -48,7 +48,7 @@ BuildRequires:  info-install
 BuildRequires:  zip
 BuildRequires:  imagemagick
 BuildRequires:  pango-modules
-BuildRequires: 	mf2pt1
+BuildRequires: 	tixlive-mf2pt1
 
 
 %description
