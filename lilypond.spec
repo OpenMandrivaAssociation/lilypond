@@ -48,6 +48,7 @@ BuildRequires:  info-install
 BuildRequires:  zip
 BuildRequires:  imagemagick
 BuildRequires:  pango-modules
+BuildRequires: 	mf2pt1
 
 
 %description
