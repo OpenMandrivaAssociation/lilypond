@@ -47,6 +47,7 @@ BuildRequires:  texinfo
 BuildRequires:  info-install
 BuildRequires:  zip
 BuildRequires:  imagemagick
+BuildRequires:  pango-modules
 
 
 %description
