@@ -53,6 +53,7 @@ BuildRequires: 	texi2html
 BuildRequires: 	dblatex 
 BuildRequires: 	netpbm
 BuildRequires:	texinfo
+BuildRequires:	rsync
 
 
 
@@ -111,7 +112,7 @@ export PANGO_RC_FILE=`pwd`/pangorc
 %{configure2_5x}
 # build doesn't work on a dual core due to upsteam bug
 ## %{make}
-make
+make all
 
 # Doesn't work out of the box for this version.
 #3%{make} web
