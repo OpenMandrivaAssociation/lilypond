@@ -43,12 +43,17 @@ BuildRequires:  gtk2-devel
 BuildRequires:  guile-devel >= 1.8.1
 BuildRequires:  mftrace
 BuildRequires:  python-devel
-BuildRequires:  texinfo
+BuildRequires:  texlive-texinfo
 BuildRequires:  info-install
 BuildRequires:  zip
 BuildRequires:  imagemagick
 BuildRequires:  pango-modules
 BuildRequires: 	texlive-mf2pt1
+BuildRequires: 	texi2html
+BuildRequires: 	dblatex 
+BuildRequires: 	netpbm
+BuildRequires:	texinfo
+
 
 
 %description
@@ -104,10 +109,12 @@ export PANGO_RC_FILE=`pwd`/pangorc
 #
 #export LC_TIME=C
 %{configure2_5x}
-%{make}
+# build doesn't work on a dual core due to upsteam bug
+## %{make}
+make
 
 # Doesn't work out of the box for this version.
-#%{make} web
+#3%{make} web
 
 %install
 %{__rm} -rf %{buildroot}
