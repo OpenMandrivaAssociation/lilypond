@@ -54,6 +54,7 @@ BuildRequires: 	dblatex
 BuildRequires: 	netpbm
 BuildRequires:	texinfo
 BuildRequires:	rsync
+BuildRequires:	kpathsea
 
 
 
