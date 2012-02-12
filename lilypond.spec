@@ -14,7 +14,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:           lilypond
-Version:        2.15.22
+Version:        2.15.29
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Program for printing sheet music
@@ -30,8 +30,11 @@ Requires(preun): rpm-helper
 Requires(post): findutils
 Requires(post): texlive
 Requires(postun): texlive
+Requires(post): texlive-texmf
+Requires(postun): texlive-texmf
 # (Abel) bib2html or bibtex2html -- pick either one
 BuildRequires:  bib2html
+BuildRequires:	texi2html
 BuildRequires:  bison
 BuildRequires:  ec-fonts-mftraced
 BuildRequires:  flex
@@ -40,22 +43,15 @@ BuildRequires:  gettext-devel
 BuildRequires:  ghostscript
 BuildRequires:  groff-for-man
 BuildRequires:  gtk2-devel
-BuildRequires:  guile-devel >= 1.8.1
+#BuildRequires:  guile1.8-devel >= 1.8.1
 BuildRequires:  mftrace
 BuildRequires:  python-devel
-BuildRequires:  texlive-texinfo
+BuildRequires:  texinfo
+BuildRequires:	netpbm
 BuildRequires:  info-install
 BuildRequires:  zip
 BuildRequires:  imagemagick
-BuildRequires:  pango-modules
-BuildRequires: 	texlive-mf2pt1
-BuildRequires: 	texi2html
-BuildRequires: 	dblatex 
-BuildRequires: 	netpbm
-BuildRequires:	texinfo
-BuildRequires:	rsync
-BuildRequires:	kpathsea
-
+BuildRequires:  dblatex
 
 
 %description
@@ -78,8 +74,7 @@ Summary:        LilyPond documentation, examples and Mutopia files
 Group:          Publishing
 Obsoletes:      %{name}-manual
 Provides:       %{name}-manual
-Requires(post): rarian
-Requires(postun): rarian
+BuildArch:	noarch
 
 %description doc
 The documentation of LilyPond, both in HTML and PostScript, along with
@@ -111,12 +106,12 @@ export PANGO_RC_FILE=`pwd`/pangorc
 #
 #export LC_TIME=C
 %{configure2_5x}
-# build doesn't work on a dual core due to upsteam bug
-## %{make}
+# let's drop the macro for the time being as the program doesn't build otherwise on a dual-core
+# %{make}
 make all
 
 # Doesn't work out of the box for this version.
-#3%{make} web
+#%{make} web
 
 %install
 %{__rm} -rf %{buildroot}
@@ -153,7 +148,8 @@ make all
 %{__mkdir_p} %{buildroot}%{_datadir}/texmf/dvips \
          %{buildroot}%{_datadir}/texmf/tex \
          %{buildroot}%{_datadir}/texmf/fonts/source \
-         %{buildroot}%{_datadir}/texmf/fonts/tfm
+         %{buildroot}%{_datadir}/texmf/fonts/tfm  \
+         %{buildroot}%{_datadir}/lilypond/%{version}/fonts/type1
 pushd %{buildroot}%{_datadir}/texmf > /dev/null
 %{__ln_s} ../../lilypond/%{version}/ps dvips/lilypond
 %{__ln_s} ../../lilypond/%{version}/tex tex/lilypond
@@ -195,7 +191,6 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 
 %postun
 %{_bindir}/mktexlsr > /dev/null
-
 
 %files -f %{name}.lang
 %defattr(-, root, root)
