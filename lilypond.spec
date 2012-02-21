@@ -32,6 +32,7 @@ Requires(post): texlive
 Requires(postun): texlive
 Requires(post): texlive-texmf
 Requires(postun): texlive-texmf
+BuildRequires:	texlive
 # (Abel) bib2html or bibtex2html -- pick either one
 BuildRequires:  bib2html
 BuildRequires:	texi2html
