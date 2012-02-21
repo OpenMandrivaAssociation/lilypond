@@ -52,7 +52,7 @@ BuildRequires:  info-install
 BuildRequires:  zip
 BuildRequires:  imagemagick
 BuildRequires:  dblatex
-
+BuildRequires:	pango
 
 %description
 LilyPond is a music typesetter.  It produces beautiful sheet music using a
@@ -69,14 +69,14 @@ If you are new to lilypond, you will almost certainly want to install the
 "lilypond-doc" package and take a look at tutorials under
 %{_docdir}/lilypond-doc.
 
-%package doc
+%package	doc
 Summary:        LilyPond documentation, examples and Mutopia files
 Group:          Publishing
 Obsoletes:      %{name}-manual
 Provides:       %{name}-manual
 BuildArch:	noarch
 
-%description doc
+%description	doc
 The documentation of LilyPond, both in HTML and PostScript, along with
 example input files and the files from the Mutopia project. If you
 want to try the examples or score files from Mutopia project, please
