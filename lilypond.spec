@@ -105,7 +105,7 @@ export PANGO_RC_FILE=`pwd`/pangorc
 # (not necessary after applying date patch)
 #
 #export LC_TIME=C
-%{configure2_5x}
+%{configure2_5x} --with-ncsb-dir=%{_datadir}/fonts/default/Type1
 # let's drop the macro for the time being as the program doesn't build otherwise on a dual-core
 # %{make}
 make all
