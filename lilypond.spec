@@ -52,6 +52,7 @@ BuildRequires:  zip
 BuildRequires:  imagemagick
 BuildRequires:  dblatex
 BuildRequires:	pango
+BuildRequires:	urw-fonts
 
 %description
 LilyPond is a music typesetter.  It produces beautiful sheet music using a
