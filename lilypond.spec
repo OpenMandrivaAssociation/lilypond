@@ -15,7 +15,7 @@
 
 Name:           lilypond
 Version:        2.15.29
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Program for printing sheet music
 License:        GPL
@@ -33,12 +33,12 @@ Requires(postun): texlive
 BuildRequires:	texlive
 # (Abel) bib2html or bibtex2html -- pick either one
 BuildRequires:  bib2html
-BuildRequires:	texi2html
+BuildRequires:  texi2html
 BuildRequires:  bison
 BuildRequires:  ec-fonts-mftraced
 BuildRequires:  flex
 BuildRequires:  fontforge >= 1.0-0.20110222
-BuildRequires:	urw-fonts
+BuildRequires:  urw-fonts
 BuildRequires:  gettext-devel
 BuildRequires:  ghostscript
 BuildRequires:  groff-for-man
@@ -47,14 +47,13 @@ BuildRequires:  guile-devel >= 1.8.1
 BuildRequires:  mftrace
 BuildRequires:  python-devel
 BuildRequires:  texinfo
-BuildRequires:	netpbm
+BuildRequires:  netpbm
 BuildRequires:  info-install
 BuildRequires:  zip
 BuildRequires:  imagemagick
 BuildRequires:  dblatex
-BuildRequires:	pango
-BuildRequires:	urw-fonts
-# BuildRequires:	texlive-collectio-music
+BuildRequires:  pango
+BuildRequires:  texlive-collection-music
 
 %description
 LilyPond is a music typesetter.  It produces beautiful sheet music using a
@@ -107,7 +106,7 @@ export PANGO_RC_FILE=`pwd`/pangorc
 # (not necessary after applying date patch)
 #
 #export LC_TIME=C
-%{configure2_5x} --with-ncsb-dir=%{_datadir}/fonts/default/Type1
+%{configure2_5x}
 # let's drop the macro for the time being as the program doesn't build otherwise on a dual-core
 # %{make}
 make all
