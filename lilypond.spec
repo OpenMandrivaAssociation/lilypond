@@ -38,6 +38,7 @@ BuildRequires:  bison
 BuildRequires:  ec-fonts-mftraced
 BuildRequires:  flex
 BuildRequires:  fontforge >= 1.0-0.20110222
+BuildRequires:	urw-fonts
 BuildRequires:  gettext-devel
 BuildRequires:  ghostscript
 BuildRequires:  groff-for-man
@@ -53,6 +54,7 @@ BuildRequires:  imagemagick
 BuildRequires:  dblatex
 BuildRequires:	pango
 BuildRequires:	urw-fonts
+# BuildRequires:	texlive-collectio-music
 
 %description
 LilyPond is a music typesetter.  It produces beautiful sheet music using a
@@ -176,7 +178,7 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 
 %{_bindir}/find /var/lib/texmf \( -name 'feta*.pk' -or -name 'feta*.tfm' -or -name 'parmesan*.pk' -or -name 'parmesan*.tfm' \) -print0 | %{_bindir}/xargs -r -0 %{__rm} -f
 
-%{_bindir}/mktexlsr > /dev/null
+%{_sbindir}/texlove.post
 
 %{_bindir}/mkfontdir %{_datadir}/lilypond/%{version}/fonts/type1
 
