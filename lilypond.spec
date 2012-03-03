@@ -14,7 +14,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:           lilypond
-Version:        2.15.30
+Version:        2.15.31
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Program for printing sheet music
