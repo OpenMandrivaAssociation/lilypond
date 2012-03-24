@@ -177,7 +177,7 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 
 %{_bindir}/find /var/lib/texmf \( -name 'feta*.pk' -or -name 'feta*.tfm' -or -name 'parmesan*.pk' -or -name 'parmesan*.tfm' \) -print0 | %{_bindir}/xargs -r -0 %{__rm} -f
 
-%{_sbindir}/texlove.post
+%{_sbindir}/texlive.post
 
 %{_bindir}/mkfontdir %{_datadir}/lilypond/%{version}/fonts/type1
 
@@ -191,7 +191,7 @@ ln -s ../../..%_datadir/lilypond/%{version}/fonts/type1 \
 %{__rm} -f %{_datadir}/lilypond/%{version}/fonts/type1/fonts.dir
 
 %postun
-%{_bindir}/mktexlsr > /dev/null
+%{_sbindir}/texlive.post
 
 %files -f %{name}.lang
 %defattr(-, root, root)
