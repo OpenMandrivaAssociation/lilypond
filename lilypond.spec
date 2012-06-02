@@ -24,12 +24,6 @@ URL:            http://www.lilypond.org/
 Source0:        http://lilypond.org/download/sources/v2.13/%{name}-%{version}.tar.gz
 Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-1.documentation.tar.bz2
 Suggests:	%{name}-doc = %{version}
-Requires(post): ec-fonts-mftraced
-Requires(post): rpm-helper
-Requires(preun): rpm-helper
-Requires(post): findutils
-Requires(post): texlive
-Requires(postun): texlive
 BuildRequires:	texlive
 # (Abel) bib2html or bibtex2html -- pick either one
 BuildRequires:  bib2html
