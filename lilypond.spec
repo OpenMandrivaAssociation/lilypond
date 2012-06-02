@@ -37,8 +37,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  ghostscript
 BuildRequires:  groff-for-man
 BuildRequires:  gtk2-devel
-BuildRequires:  guile-devel
-BuildRequires:  guile
+BuildRequires:  guile1.8-devel
 BuildRequires:  mftrace
 BuildRequires:  python-devel
 BuildRequires:  texinfo
