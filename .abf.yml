@@ -1,3 +1,4 @@
+---
 sources:
-  "lilypond-2.16.0-1.documentation.tar.bz2:"	5ca5877d46430d3e6c40a631de6e88c62af67953
-  "lilypond-2.16.0.tar.gz:"	b5edfdd1332a5cee94bd31c7b1e8b08909c0a068
+  lilypond-2.16.0.tar.gz: b5edfdd1332a5cee94bd31c7b1e8b08909c0a068
+  lilypond-2.16.0-1.documentation.tar.bz2: 5ca5877d46430d3e6c40a631de6e88c62af67953
