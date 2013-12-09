@@ -37,7 +37,7 @@ BuildRequires:	bib2html
 BuildRequires:	texi2html
 BuildRequires:	bison
 BuildRequires:	ec-fonts-mftraced
-BuildRequires:	flex
+BuildRequires:	flex-devel
 BuildRequires:	fontconfig
 BuildRequires:	fontforge >= 1.0-0.20110222
 BuildRequires:	gettext-devel
