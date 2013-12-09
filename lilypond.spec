@@ -13,16 +13,18 @@
 # for python modules
 %define _disable_ld_no_undefined 1
 
+%define docversion 2.16.0
+
 Name:		lilypond
-Version:	2.16.0
-Release:	2
+Version:	2.17.97
+Release:	1
 Epoch:		0
 Summary:	Program for printing sheet music
 License:	GPL
 Group:		Publishing
 URL:		http://www.lilypond.org/
-Source0:	http://lilypond.org/download/sources/v2.13/%{name}-%{version}.tar.gz
-Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{version}-1.documentation.tar.bz2
+Source0:	http://lilypond.org/download/sources/v2.17/%{name}-%{version}.tar.gz
+Source2:	http://download.linuxaudio.org/lilypond/binaries/documentation/%{name}-%{docversion}-1.documentation.tar.bz2
 Source10:	%{name}.rpmlintrc
 Suggests:	%{name}-doc = %{version}
 Requires(post):	ec-fonts-mftraced
@@ -53,6 +55,7 @@ BuildRequires:	netpbm
 BuildRequires:	zip
 BuildRequires:	imagemagick
 BuildRequires:	dblatex
+BuildRequires:	rsync
 Requires:		guile1.8
 
 %description
