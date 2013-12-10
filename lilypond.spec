@@ -16,7 +16,7 @@
 %define docversion 2.16.0
 
 Name:		lilypond
-Version:	2.16.2
+Version:	2.17.97
 Release:	1
 Epoch:		0
 Summary:	Program for printing sheet music
