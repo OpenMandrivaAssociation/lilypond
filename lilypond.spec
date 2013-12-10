@@ -177,7 +177,7 @@ rm -f %{_datadir}/lilypond/%{version}/fonts/type1/fonts.dir
 mktexlsr > /dev/null
 
 %files -f %{name}.lang
-%doc COPYING README.txt DEDICATION NEWS.txt AUTHORS.txt THANKS
+%doc COPYING README.txt DEDICATION NEWS.txt AUTHORS.txt
 %{_bindir}/*
 %{_datadir}/emacs/site-lisp/lilypond*
 %{_datadir}/%{name}
