@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 Name:		lilypond
 Version:	2.17.97
 Release:	1%{?dist}
