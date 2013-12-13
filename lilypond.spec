@@ -13,6 +13,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
 
 Requires:	ghostscript >= 8.15
+Requires:	guile1.8
 Obsoletes: 	lilypond-fonts <= 2.12.1-1
 Requires:	lilypond-century-schoolbook-l-fonts = %{version}-%{release}
 Requires:	lilypond-emmentaler-fonts = %{version}-%{release}
