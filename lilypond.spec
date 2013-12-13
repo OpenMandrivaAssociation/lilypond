@@ -27,6 +27,7 @@ BuildRequires:	dblatex
 BuildRequires:	texi2html
 BuildRequires:	perl-Pod-Parser
 BuildRequires:	rsync
+BuildRequires:	texlive
 
 %description
 LilyPond is an automated music engraving system. It formats music
