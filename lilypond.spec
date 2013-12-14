@@ -1,8 +1,9 @@
+%define __noautoreq '/usr/bin/guile'
 %define _disable_ld_no_undefined 1
 
 Name:		lilypond
 Version:	2.17.97
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	A typesetting system for music notation
 
 
