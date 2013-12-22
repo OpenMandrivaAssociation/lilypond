@@ -3,14 +3,13 @@
 
 Name:		lilypond
 Version:	2.17.97
-Release:	2%{?dist}
+Release:	3
 Summary:	A typesetting system for music notation
 
 
 License:	GPLv3
 URL:		http://www.lilypond.org
 Source0:	http://download.linuxaudio.org/lilypond/sources/v2.15/%{name}-%{version}.tar.gz
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
 
 Requires:	ghostscript >= 8.15
@@ -108,7 +107,7 @@ make
 %install
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT package_infodir=%{_infodir} \
-	vimdir=%{_datadir}/vim/vim74
+	vimdir=%{_datadir}/vim
 
 chmod +x $RPM_BUILD_ROOT%{_libdir}/%{name}/%{version}/python/midi.so
 
