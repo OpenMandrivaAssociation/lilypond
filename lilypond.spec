@@ -146,7 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lilypond
 %{_datadir}/lilypond
 %{_datadir}/emacs/site-lisp
-%{_datadir}/vim/vim*
+%{_datadir}/vim/*/*
 %{_infodir}/*
 %{_mandir}/man1/*
 
