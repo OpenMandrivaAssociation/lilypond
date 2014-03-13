@@ -28,10 +28,8 @@ BuildRequires:  pango-devel >= 1.12.0
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  fontpackages-devel
 BuildRequires:	dblatex
 BuildRequires:	texi2html
-BuildRequires:	perl-Pod-Parser
 BuildRequires:	rsync
 BuildRequires:	texlive
 BuildRequires:	flex-devel
