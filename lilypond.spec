@@ -136,10 +136,9 @@ mv $RPM_BUILD_ROOT%{_datadir}/lilypond/%{version}/fonts/otf/*.otf $RPM_BUILD_ROO
 rmdir $RPM_BUILD_ROOT%{_datadir}/lilypond/%{version}/fonts/otf
 ln -s %{_fontdir} $RPM_BUILD_ROOT%{_datadir}/lilypond/%{version}/fonts/otf
 
-
+chmod +x %{buildroot}%{_datadir}/lilypond/2.18.2/python/langdefs.py
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc AUTHORS.txt COPYING DEDICATION HACKING INSTALL.txt
 %doc NEWS.txt README.txt ROADMAP VERSION
 %{_bindir}/*
