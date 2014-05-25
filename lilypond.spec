@@ -2,23 +2,27 @@
 %define _disable_ld_no_undefined 1
 
 Name:		lilypond
-Version:	2.17.97
-Release:	3
+Version:	2.18.2
+Release:	1
 Summary:	A typesetting system for music notation
-
-
+Group:		Publishing
 License:	GPLv3
 URL:		http://www.lilypond.org
-Source0:	http://download.linuxaudio.org/lilypond/sources/v2.15/%{name}-%{version}.tar.gz
+Source0:	http://download.linuxaudio.org/lilypond/sources/v2.18/%{name}-%{version}.tar.gz
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
-
+Group:		Publishing
 Requires:	ghostscript >= 8.15
 Requires:	guile1.8
 Obsoletes: 	lilypond-fonts <= 2.12.1-1
 Requires:	lilypond-century-schoolbook-l-fonts = %{version}-%{release}
 Requires:	lilypond-emmentaler-fonts = %{version}-%{release}
 
-Buildrequires:  t1utils bison flex imagemagick gettext tetex
+BuildRequires:  t1utils 
+BuildRequires:  bison 
+BuildRequires:  flex 
+BuildRequires:  imagemagick 
+BuildRequires:  gettext 
+BuildRequires:  tetex
 BuildRequires:  python-devel >= 2.4.0
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  texinfo >= 4.8
@@ -133,9 +137,6 @@ rmdir $RPM_BUILD_ROOT%{_datadir}/lilypond/%{version}/fonts/otf
 ln -s %{_fontdir} $RPM_BUILD_ROOT%{_datadir}/lilypond/%{version}/fonts/otf
 
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
@@ -156,5 +157,4 @@ rm -rf $RPM_BUILD_ROOT
 %files fonts-common
 %doc COPYING
 %defattr(0644,root,root,0755)
-
 %dir %{_fontdir}
