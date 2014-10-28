@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   lilypond-2.18.2.tar.gz: 09d3a1e0e9fadeb8ef6e279227a2b30812c7ee9b
+sources:
+  lilypond-2.19.15.tar.gz: d4be61e4074edc2d0447304db52941c147be06b6
