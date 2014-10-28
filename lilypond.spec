@@ -2,36 +2,39 @@
 %define _disable_ld_no_undefined 1
 
 Name:		lilypond
-Version:	2.17.97
-Release:	5
+Version:	2.19.15
+Release:	1
 Summary:	A typesetting system for music notation
-
-
+Group:		Publishing
 License:	GPLv3
 URL:		http://www.lilypond.org
-Source0:	http://download.linuxaudio.org/lilypond/sources/v2.15/%{name}-%{version}.tar.gz
+Source0:	http://download.linuxaudio.org/lilypond/sources/v2.18/%{name}-%{version}.tar.gz
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
-
+Group:		Publishing
 Requires:	ghostscript >= 8.15
 Requires:	guile1.8
 Obsoletes: 	lilypond-fonts <= 2.12.1-1
 Requires:	lilypond-century-schoolbook-l-fonts = %{version}-%{release}
 Requires:	lilypond-emmentaler-fonts = %{version}-%{release}
 
-Buildrequires:  t1utils bison flex imagemagick gettext tetex
+BuildRequires:  t1utils 
+BuildRequires:  bison 
+BuildRequires:  flex 
+BuildRequires:  imagemagick 
+BuildRequires:  gettext 
+BuildRequires:  tetex
 BuildRequires:  python-devel >= 2.4.0
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  texinfo >= 4.8
-BuildRequires:  pkgconfig(guile-1.8)
+BuildRequires:  pkgconfig(guile-2.0)
 BuildRequires:  ghostscript >= 8.15
 BuildRequires:  pango-devel >= 1.12.0
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  fontpackages-devel
+BuildRequires:	fontpackages-devel
 BuildRequires:	dblatex
 BuildRequires:	texi2html
-BuildRequires:	perl-Pod-Parser
 BuildRequires:	rsync
 BuildRequires:	texlive
 BuildRequires:	flex-devel
@@ -97,49 +100,47 @@ This contains the directory common to all lilypond fonts.
 %patch0 -p0
 
 %build
-%configure --without-kpathsea --disable-checking \
-	--with-ncsb-dir=%{_datadir}/fonts/default/Type1
+export PYTHON=%__python2
+%configure \
+	--with-ncsb-dir=%{_datadir}/fonts/default/Type1 \
+	--enable-guile2
 # underlink
 echo LIBS=-lpython2.7 >> python/GNUmakefile
 make
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT package_infodir=%{_infodir} \
+rm -rf %{buildroot}
+make install DESTDIR=%{buildroot} package_infodir=%{_infodir} \
 	vimdir=%{_datadir}/vim
 
-chmod +x $RPM_BUILD_ROOT%{_libdir}/%{name}/%{version}/python/midi.so
+chmod +x %{buildroot}%{_libdir}/%{name}/%{version}/python/midi.so
 
 # Symlink lilypond-init.el in emacs' site-start.d directory
-pushd $RPM_BUILD_ROOT%{_datadir}/emacs/site-lisp
+pushd %{buildroot}%{_datadir}/emacs/site-lisp
 mkdir site-start.d
 ln -s ../lilypond-init.el site-start.d
 popd
 
 # Change encoding to UTF8
-pushd $RPM_BUILD_ROOT%{_infodir}
+pushd %{buildroot}%{_infodir}
 iconv -f iso-8859-1 -t utf-8 music-glossary.info > music-glossary.info.utf8
 mv music-glossary.info.utf8 music-glossary.info
 sed -e s,lilypond/,, -i *.info
 popd
 
-rm -f $RPM_BUILD_ROOT%{_infodir}/dir
+rm -f %{buildroot}%{_infodir}/dir
 
 %find_lang %{name}
 
-mkdir -p $RPM_BUILD_ROOT%{_fontdir}
-mv $RPM_BUILD_ROOT%{_datadir}/lilypond/%{version}/fonts/otf/*.otf $RPM_BUILD_ROOT%{_fontdir}
-rmdir $RPM_BUILD_ROOT%{_datadir}/lilypond/%{version}/fonts/otf
-ln -s %{_fontdir} $RPM_BUILD_ROOT%{_datadir}/lilypond/%{version}/fonts/otf
+mkdir -p %{buildroot}%{_fontdir}
+mv %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf/*.otf $RPM_BUILD_ROOT%{_fontdir}
+rmdir %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
+ln -s %{_fontdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
+chmod +x %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc AUTHORS.txt COPYING DEDICATION HACKING INSTALL.txt
 %doc NEWS.txt README.txt ROADMAP VERSION
 %{_bindir}/*
@@ -156,6 +157,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files fonts-common
 %doc COPYING
-%defattr(0644,root,root,0755)
-
 %dir %{_fontdir}
