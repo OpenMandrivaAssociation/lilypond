@@ -23,7 +23,7 @@ BuildRequires:  flex
 BuildRequires:  imagemagick 
 BuildRequires:  gettext 
 BuildRequires:  tetex
-BuildRequires:  python-devel >= 2.4.0
+BuildRequires:  pkgconfig(python)
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  texinfo >= 4.8
 BuildRequires:  pkgconfig(guile-2.0)
@@ -37,6 +37,7 @@ BuildRequires:	dblatex
 BuildRequires:	texi2html
 BuildRequires:	rsync
 BuildRequires:	texlive
+BuildRequires:	texlive-latex-bin
 BuildRequires:	flex-devel
 BuildRequires:	netpbm
 BuildRequires:	zip
