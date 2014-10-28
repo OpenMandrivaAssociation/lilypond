@@ -105,6 +105,7 @@ export PYTHON=%__python2
 %configure \
 	--with-ncsb-dir=%{_datadir}/fonts/default/Type1 \
 	--enable-guile2
+sed -i '1 s|^.*$|#!/usr/bin/guile -s|' scripts/lilypond-invoke-editor.scm
 # underlink
 echo LIBS=-lpython2.7 >> python/GNUmakefile
 make
