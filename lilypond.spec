@@ -3,7 +3,7 @@
 
 Name:		lilypond
 Version:	2.19.15
-Release:	1
+Release:	2
 Summary:	A typesetting system for music notation
 Group:		Publishing
 License:	GPLv3
@@ -12,7 +12,7 @@ Source0:	http://download.linuxaudio.org/lilypond/sources/v2.18/%{name}-%{version
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
 Group:		Publishing
 Requires:	ghostscript >= 8.15
-Requires:	guile1.8
+Requires:	guile
 Obsoletes: 	lilypond-fonts <= 2.12.1-1
 Requires:	lilypond-century-schoolbook-l-fonts = %{version}-%{release}
 Requires:	lilypond-emmentaler-fonts = %{version}-%{release}
