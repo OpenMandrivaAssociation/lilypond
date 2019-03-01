@@ -2,8 +2,8 @@
 %define _disable_ld_no_undefined 1
 
 Name:		lilypond
-Version:	2.19.15
-Release:	5
+Version:	2.19.82
+Release:	1
 Summary:	A typesetting system for music notation
 Group:		Publishing
 License:	GPLv3
