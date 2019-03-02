@@ -122,7 +122,7 @@ rm -rf %{buildroot}
 make install DESTDIR=%{buildroot} package_infodir=%{_infodir} \
 	vimdir=%{_datadir}/vim
 
-chmod +x %{buildroot}%{_libdir}/%{name}/%{version}/python/midi.so
+#chmod +x %{buildroot}%{_libdir}/%{name}/%{version}/python/midi.so
 
 # Symlink lilypond-init.el in emacs' site-start.d directory
 pushd %{buildroot}%{_datadir}/emacs/site-lisp
