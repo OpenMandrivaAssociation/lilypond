@@ -27,6 +27,7 @@ BuildRequires:  pkgconfig(python2)
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  texinfo >= 4.8
 BuildRequires:	pkgconfig(guile-1.8)
+BuildRequires:  guile1.8
 #BuildRequires:  pkgconfig(guile-2.2)
 BuildRequires:  ghostscript >= 8.15
 BuildRequires:  pango-devel >= 1.12.0
@@ -108,7 +109,6 @@ export CXX=g++
 export PYTHON=%__python2
 %configure \
 	--with-ncsb-dir=%{_datadir}/fonts/default/Type1 \
-	--enable-guile2 \
 	--with-texgyre-dir=/usr/share/texmf-dist/fonts/opentype/public/tex-gyre/
 
 sed -i '1 s|^.*$|#!/usr/bin/guile -s|' scripts/lilypond-invoke-editor.scm
