@@ -26,7 +26,7 @@ BuildRequires:  tetex
 BuildRequires:  pkgconfig(python2)
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  texinfo >= 4.8
-BuilsRequires:	pkgconfig(guile-1.8)
+BuildRequires:	pkgconfig(guile-1.8)
 #BuildRequires:  pkgconfig(guile-2.2)
 BuildRequires:  ghostscript >= 8.15
 BuildRequires:  pango-devel >= 1.12.0
