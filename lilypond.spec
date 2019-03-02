@@ -102,6 +102,8 @@ This contains the directory common to all lilypond fonts.
 %patch0 -p0
 
 %build
+export CC=gcc
+export CXX=g++
 export PYTHON=%__python2
 %configure \
 	--with-ncsb-dir=%{_datadir}/fonts/default/Type1 \
