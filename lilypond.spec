@@ -159,7 +159,7 @@ chmod +x %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 %{_infodir}/*
 %{_mandir}/man1/*
 
-%_font_pkg -n century-schoolbook-l CenturySchL*otf
+#_font_pkg -n century-schoolbook-l CenturySchL*otf
 
 %_font_pkg -n emmentaler emmentaler*otf
 
