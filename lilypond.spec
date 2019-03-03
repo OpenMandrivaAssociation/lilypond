@@ -14,7 +14,6 @@ Patch1:		lilypond-2.19.82-guile-2.2.patch
 Requires:	ghostscript >= 8.15
 Requires:	guile
 Obsoletes: 	lilypond-fonts <= 2.12.1-1
-Requires:	lilypond-century-schoolbook-l-fonts = %{version}-%{release}
 Requires:	lilypond-emmentaler-fonts = %{version}-%{release}
 
 BuildRequires:  t1utils 
@@ -80,13 +79,7 @@ These are the emmentaler fonts included in the package.
 
 %package fonts-common
 Summary:        Lilypond fonts common dir
-
 Requires:       fontpackages-filesystem
-Obsoletes:	lilypond-aybabtu-fonts <= 2.12.3-3
-Obsoletes:	lilypond-feta-fonts <= 2.12.3-3
-Obsoletes:	lilypond-feta-alphabet-fonts <= 2.12.3-3
-Obsoletes:	lilypond-feta-braces-fonts <= 2.12.3-3
-Obsoletes:	lilypond-parmesan-fonts <= 2.12.3-3
 BuildArch:	noarch
 
 %description fonts-common
