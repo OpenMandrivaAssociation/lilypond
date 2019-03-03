@@ -166,3 +166,4 @@ chmod +x %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 %files fonts-common
 %doc COPYING
 %dir %{_fontdir}
+%{_fontdir}/%{name}/*
