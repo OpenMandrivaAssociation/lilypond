@@ -10,7 +10,7 @@ License:	GPLv3
 URL:		http://www.lilypond.org
 Source0:	http://download.linuxaudio.org/lilypond/sources/v2.18/%{name}-%{version}.tar.gz
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
-Group:		Publishing
+Patch1:		lilypond-2.19.82-guile-2.2.patch
 Requires:	ghostscript >= 8.15
 Requires:	guile
 Obsoletes: 	lilypond-fonts <= 2.12.1-1
@@ -26,9 +26,7 @@ BuildRequires:  tetex
 BuildRequires:  pkgconfig(python2)
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  texinfo >= 4.8
-BuildRequires:	pkgconfig(guile-1.8)
-BuildRequires:  guile1.8
-#BuildRequires:  pkgconfig(guile-2.2)
+BuildRequires:  pkgconfig(guile-2.2)
 BuildRequires:  ghostscript >= 8.15
 BuildRequires:  pango-devel >= 1.12.0
 BuildRequires:  pkgconfig(pangoft2)
@@ -100,26 +98,26 @@ This contains the directory common to all lilypond fonts.
 
 %prep
 %setup -q
-
-%patch0 -p0
+%patch0 -p0 -b .gcc44~
+%patch1 -p1 -b .guile22~
 
 %build
 export CC=gcc
 export CXX=g++
 export PYTHON=%__python2
 %configure \
+	--enable-guile2 \
 	--with-ncsb-dir=%{_datadir}/fonts/default/Type1 \
 	--with-texgyre-dir=/usr/share/texmf-dist/fonts/opentype/public/tex-gyre/
 
 sed -i '1 s|^.*$|#!/usr/bin/guile -s|' scripts/lilypond-invoke-editor.scm
 # underlink
 echo LIBS=-lpython2.7 >> python/GNUmakefile
-make
+%make
 
 
 %install
-rm -rf %{buildroot}
-make install DESTDIR=%{buildroot} package_infodir=%{_infodir} \
+%make_install package_infodir=%{_infodir} \
 	vimdir=%{_datadir}/vim
 
 #chmod +x %{buildroot}%{_libdir}/%{name}/%{version}/python/midi.so
@@ -165,5 +163,4 @@ chmod +x %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 
 %files fonts-common
 %doc COPYING
-%dir %{_fontdir}
-%{_fontdir}/%{name}/*
+%{_fontdir}

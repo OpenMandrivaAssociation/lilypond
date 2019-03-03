@@ -1,0 +1,13 @@
+diff -up lilypond-2.19.82/lily/general-scheme.cc.omv~ lilypond-2.19.82/lily/general-scheme.cc
+--- lilypond-2.19.82/lily/general-scheme.cc.omv~	2019-03-03 02:07:53.175482086 +0100
++++ lilypond-2.19.82/lily/general-scheme.cc	2019-03-03 02:08:08.420722490 +0100
+@@ -275,7 +275,8 @@ LY_DEFINE (ly_protects, "ly:protects",
+ #if SCM_MAJOR_VERSION < 2 || SCM_MAJOR_VERSION == 2 && SCM_MINOR_VERSION < 1
+   return scm_protects;
+ #else
+-  return programming_error ("ly:protects is not supported in Guile 2.1");
++  programming_error ("ly:protects is not supported in Guile 2.1+");
++  return 0;
+ #endif
+ }
+ 
