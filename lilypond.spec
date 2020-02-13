@@ -2,13 +2,13 @@
 %define _disable_ld_no_undefined 1
 
 Name:		lilypond
-Version:	2.19.82
+Version:	2.19.84
 Release:	2
 Summary:	A typesetting system for music notation
 Group:		Publishing
 License:	GPLv3
 URL:		http://www.lilypond.org
-Source0:	http://download.linuxaudio.org/lilypond/sources/v2.18/%{name}-%{version}.tar.gz
+Source0:	http://lilypond.org/download/source/v2.19/%{name}-%{version}.tar.gz
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
 Patch1:		lilypond-2.19.82-guile-2.2.patch
 Requires:	ghostscript >= 8.15
