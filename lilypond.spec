@@ -2,17 +2,17 @@
 %define _disable_ld_no_undefined 1
 
 Name:		lilypond
-Version:	2.19.84
-Release:	2
+Version:	2.21.3
+Release:	1
 Summary:	A typesetting system for music notation
 Group:		Publishing
 License:	GPLv3
 URL:		http://www.lilypond.org
-Source0:	http://lilypond.org/download/source/v2.19/%{name}-%{version}.tar.gz
+Source0:	http://lilypond.org/download/source/v2.20/%{name}-%{version}.tar.gz
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
-Patch1:		lilypond-2.19.82-guile-2.2.patch
+#Patch1:		lilypond-2.19.82-guile-2.2.patch
 Requires:	ghostscript >= 8.15
-Requires:	guile
+Requires:	guile22
 Obsoletes: 	lilypond-fonts <= 2.12.1-1
 Requires:	lilypond-emmentaler-fonts = %{version}-%{release}
 
@@ -22,7 +22,7 @@ BuildRequires:  flex
 BuildRequires:  imagemagick 
 BuildRequires:  gettext 
 BuildRequires:  tetex
-BuildRequires:  pkgconfig(python2)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  texinfo >= 4.8
 BuildRequires:  pkgconfig(guile-2.2)
@@ -92,20 +92,18 @@ This contains the directory common to all lilypond fonts.
 %prep
 %setup -q
 %patch0 -p0 -b .gcc44~
-%patch1 -p1 -b .guile22~
+#patch1 -p1 -b .guile22~
 
 %build
 export CC=gcc
 export CXX=g++
-export PYTHON=%__python2
+export PYTHON=%__python3
+export GUILE=%{_bindir}/guile22
 %configure \
-	--enable-guile2 \
 	--with-ncsb-dir=%{_datadir}/fonts/default/Type1 \
 	--with-texgyre-dir=/usr/share/texmf-dist/fonts/opentype/public/tex-gyre/
 
-sed -i '1 s|^.*$|#!/usr/bin/guile -s|' scripts/lilypond-invoke-editor.scm
-# underlink
-echo LIBS=-lpython2.7 >> python/GNUmakefile
+sed -i '1 s|^.*$|#!/usr/bin/guile22 -s|' scripts/lilypond-invoke-editor.scm
 %make
 
 
@@ -143,7 +141,6 @@ chmod +x %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 %doc AUTHORS.txt COPYING DEDICATION HACKING INSTALL.txt
 %doc NEWS.txt README.txt ROADMAP VERSION
 %{_bindir}/*
-%{_libdir}/lilypond
 %{_datadir}/lilypond
 %{_datadir}/emacs/site-lisp
 %{_datadir}/vim/*/*
@@ -155,5 +152,4 @@ chmod +x %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 %_font_pkg -n emmentaler emmentaler*otf
 
 %files fonts-common
-%doc COPYING
 %{_fontdir}
