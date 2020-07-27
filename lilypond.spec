@@ -44,6 +44,7 @@ BuildRequires:	texlive-epsf
 BuildRequires:	flex-devel
 BuildRequires:	netpbm
 BuildRequires:	zip
+BuildRequires; 	strace
 
 %description
 LilyPond is an automated music engraving system. It formats music
@@ -97,9 +98,9 @@ This contains the directory common to all lilypond fonts.
 %patch0 -p0 -b .gcc44~
 #patch1 -p1 -b .guile22~
 echo epsf
-kpsewhich tex epsf
+strace kpsewhich tex epsf
 echo fikparm
-kpsewhich -format=mf fikparm
+strace kpsewhich -format=mf fikparm
 
 %build
 export CC=gcc
