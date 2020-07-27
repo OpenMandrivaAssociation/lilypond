@@ -97,10 +97,6 @@ This contains the directory common to all lilypond fonts.
 %setup -q
 %patch0 -p0 -b .gcc44~
 #patch1 -p1 -b .guile22~
-echo epsf
-strace kpsewhich tex epsf
-echo fikparm
-strace kpsewhich -format=mf fikparm
 
 %build
 export CC=gcc
