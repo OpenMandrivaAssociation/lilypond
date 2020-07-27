@@ -44,7 +44,7 @@ BuildRequires:	texlive-epsf
 BuildRequires:	flex-devel
 BuildRequires:	netpbm
 BuildRequires:	zip
-BuildRequires; 	strace
+BuildRequires: 	strace
 
 %description
 LilyPond is an automated music engraving system. It formats music
