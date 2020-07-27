@@ -38,6 +38,8 @@ BuildRequires:	rsync
 BuildRequires:	texlive
 BuildRequires:	texlive-latex-bin
 BuildRequires:	texlive-tex-gyre
+BuildRequires:	texlive-lh
+BuildRequires:	texlive-metapost
 BuildRequires:	flex-devel
 BuildRequires:	netpbm
 BuildRequires:	zip
