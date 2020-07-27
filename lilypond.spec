@@ -96,6 +96,10 @@ This contains the directory common to all lilypond fonts.
 %setup -q
 %patch0 -p0 -b .gcc44~
 #patch1 -p1 -b .guile22~
+echo epsf
+kpsewhich tex epsf
+echo fikparm
+kpsewhich -format=mf fikparm
 
 %build
 export CC=gcc
@@ -103,7 +107,6 @@ export CXX=g++
 export PYTHON=%__python3
 export GUILE=%{_bindir}/guile22
 %configure \
-	--with-ncsb-dir=%{_datadir}/fonts/default/Type1 \
 	--with-texgyre-dir=/usr/share/texmf-dist/fonts/opentype/public/tex-gyre/
 
 sed -i '1 s|^.*$|#!/usr/bin/guile22 -s|' scripts/lilypond-invoke-editor.scm
