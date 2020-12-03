@@ -142,7 +142,7 @@ chmod +x %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 
 %files -f %{name}.lang
 %doc AUTHORS.txt COPYING DEDICATION HACKING INSTALL.txt
-%doc NEWS.txt README.txt ROADMAP VERSION
+%doc NEWS.txt README.md ROADMAP VERSION
 %{_bindir}/*
 %{_datadir}/lilypond
 %{_datadir}/emacs/site-lisp
