@@ -2,15 +2,14 @@
 %define _disable_ld_no_undefined 1
 
 Name:		lilypond
-Version:	2.21.7
+Version:	2.22.0
 Release:	1
 Summary:	A typesetting system for music notation
 Group:		Publishing
 License:	GPLv3
 URL:		http://www.lilypond.org
-Source0:	http://lilypond.org/download/source/v2.20/%{name}-%{version}.tar.gz
+Source0:	http://lilypond.org/download/source/v2.22/%{name}-%{version}.tar.gz
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
-#Patch1:		lilypond-2.19.82-guile-2.2.patch
 Requires:	ghostscript >= 8.15
 Requires:	guile22
 Obsoletes: 	lilypond-fonts <= 2.12.1-1
@@ -96,7 +95,6 @@ This contains the directory common to all lilypond fonts.
 %prep
 %setup -q
 %patch0 -p0 -b .gcc44~
-#patch1 -p1 -b .guile22~
 
 %build
 export CC=gcc
