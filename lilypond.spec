@@ -24,6 +24,7 @@ BuildRequires:  tetex
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  texinfo >= 4.8
+BuildRequires:	pkgconfig(atomic_ops)
 BuildRequires:  pkgconfig(guile-2.2)
 BuildRequires:  ghostscript >= 8.15
 BuildRequires:  pango-devel >= 1.12.0
