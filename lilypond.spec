@@ -3,7 +3,7 @@
 
 Name:		lilypond
 Version:	2.22.2
-Release:	1
+Release:	2
 Summary:	A typesetting system for music notation
 Group:		Publishing
 License:	GPLv3
