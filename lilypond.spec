@@ -141,7 +141,7 @@ ln -s %{_fontdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 chmod +x %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 
 %files -f %{name}.lang
-%doc AUTHORS.txt COPYING DEDICATION HACKING INSTALL.txt
+%doc AUTHORS.txt COPYING DEDICATION INSTALL.txt
 %doc NEWS.txt README.md ROADMAP VERSION
 %{_bindir}/*
 %{_datadir}/lilypond
