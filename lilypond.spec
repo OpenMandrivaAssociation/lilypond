@@ -105,7 +105,7 @@ export GUILE=%{_bindir}/guile22
 %configure \
 	--with-texgyre-dir=/usr/share/texmf-dist/fonts/opentype/public/tex-gyre/
 
-sed -i '1 s|^.*$|#!/usr/bin/guile22 -s|' scripts/lilypond-invoke-editor.scm
+#sed -i '1 s|^.*$|#!/usr/bin/guile22 -s|' scripts/lilypond-invoke-editor.scm
 %make
 
 
