@@ -45,6 +45,7 @@ BuildRequires:	flex-devel
 BuildRequires:	netpbm
 BuildRequires:	zip
 BuildRequires: 	strace
+BuildRequires:	locales-extra-charsets
 
 %description
 LilyPond is an automated music engraving system. It formats music
