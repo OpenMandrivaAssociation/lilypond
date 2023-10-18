@@ -45,6 +45,7 @@ BuildRequires:	flex-devel
 BuildRequires:	netpbm
 BuildRequires:	zip
 BuildRequires: 	strace
+BuildRequires:	locales-extra-charsets
 
 %description
 LilyPond is an automated music engraving system. It formats music
@@ -105,7 +106,7 @@ export GUILE=%{_bindir}/guile22
 %configure \
 	--with-texgyre-dir=/usr/share/texmf-dist/fonts/opentype/public/tex-gyre/
 
-sed -i '1 s|^.*$|#!/usr/bin/guile22 -s|' scripts/lilypond-invoke-editor.scm
+#sed -i '1 s|^.*$|#!/usr/bin/guile22 -s|' scripts/lilypond-invoke-editor.scm
 %make
 
 
@@ -140,7 +141,7 @@ ln -s %{_fontdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 chmod +x %{buildroot}%{_datadir}/lilypond/%{version}/python/langdefs.py
 
 %files -f %{name}.lang
-%doc AUTHORS.txt COPYING DEDICATION HACKING INSTALL.txt
+%doc AUTHORS.txt COPYING DEDICATION INSTALL.txt
 %doc NEWS.txt README.md ROADMAP VERSION
 %{_bindir}/*
 %{_datadir}/lilypond
