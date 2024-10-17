@@ -7,7 +7,7 @@ Release:	1
 Summary:	A typesetting system for music notation
 Group:		Publishing
 License:	GPLv3
-URL:		http://www.lilypond.org
+URL:		https://www.lilypond.org
 Source0:	http://lilypond.org/download/source/v2.22/%{name}-%{version}.tar.gz
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
 Requires:	ghostscript >= 8.15
