@@ -96,7 +96,7 @@ This contains the directory common to all lilypond fonts.
 
 %prep
 %setup -q
-%patch0 -p0 -b .gcc44~
+%patch 0 -p0 -b .gcc44~
 
 %build
 export CC=gcc
