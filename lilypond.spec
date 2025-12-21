@@ -9,6 +9,11 @@ Group:		Publishing
 Url:		https://www.lilypond.org
 Source0:	https://lilypond.org/download/sources/v2.23/%{name}-%{version}.tar.gz
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	bison >= 2.4.1
 BuildRequires:	dblatex
 # Not provided yet
