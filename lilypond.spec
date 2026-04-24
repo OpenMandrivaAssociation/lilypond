@@ -2,12 +2,12 @@
 
 Summary:	A typesetting system for music notation
 Name:		lilypond
-Version:	2.24.4
-Release:	2
-License:	GPLv3+
+Version:		2.26.0
+Release:		1
+License:		GPLv3+
 Group:		Publishing
-Url:		https://www.lilypond.org
-Source0:	https://lilypond.org/download/sources/v2.23/%{name}-%{version}.tar.gz
+Url:		https://lilypond.org/doc/v2.26/Documentation/web/index
+Source0:	https://lilypond.org/download/sources/v2.26/%{name}-%{version}.tar.gz
 Patch0:		lilypond-2.21.2-gcc44-relocate.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -43,12 +43,13 @@ BuildRequires:	texlive-xetex
 BuildRequires:	texlive-collection-langcyrillic
 BuildRequires:	tidy
 BuildRequires:	zip
+BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(fontconfig) >= 2.4.0
 BuildRequires:	pkgconfig(glib-2.0) >= 2.38
-#BuildRequires:	pkgconfig(guile-2.2)
 BuildRequires:	pkgconfig(guile-3.0)
 BuildRequires:	pkgconfig(libfl)
+BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(pango) >= 1.12.0
 BuildRequires:	pkgconfig(pangoft2) >= 1.38.0
 BuildRequires:	pkgconfig(python3) >= 3.6
@@ -66,7 +67,7 @@ files.
 %doc AUTHORS.txt COPYING DEDICATION
 %doc NEWS.txt README.md ROADMAP VERSION
 %{_bindir}/*
-#%%{_libdir}/%%{name}
+%{_libdir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/emacs/site-lisp
 %{_datadir}/vim/*/*
@@ -120,8 +121,8 @@ This package contains the directory common to all lilypond fonts.
 
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 export GUILE_FLAVOR=guile-3.0
 # Needed only when building unstable
 #./autogen.sh --noconfigure
@@ -156,7 +157,7 @@ rmdir %{buildroot}%{_datadir}/%{name}/%{version}/fonts/otf
 ln -s %{_datadir}/fonts/OTF %{buildroot}%{_datadir}/%{name}/%{version}/fonts/otf
 
 # Fix python shebangs
-sed '1 s,^.*$,#!%{__python3},' -i %{buildroot}%{_bindir}/{lilypond-book,lilysong,midi2ly,lilymidi,abc2ly,etf2ly,musicxml2ly,convert-ly}
+sed '1 s,^.*$,#!%{__python3},' -i %{buildroot}%{_bindir}/{lilypond-book,midi2ly,lilymidi,abc2ly,etf2ly,musicxml2ly,convert-ly}
 
 
 %find_lang %{name}
